@@ -2,45 +2,45 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace _1GenAlg2ex.Core // параметры с маленькой буквы, атрибуты _имяатрибута (исправить поля, атрибуты и тд в соответствующей стилистике)
+namespace _1GenAlg2ex.Core
 {
     internal class Genotype
     {
-        private List<(double Min, double Max)> bounds = new List<(double Min, double Max)> ();
+        private List<(double Min, double Max)> _bounds = new List<(double Min, double Max)>();
 
-        public int _bitsPerGene { get; private set; }
+        public int BitsPerGene { get; private set; }
 
         public List<bool> Chromosome { get; private set; }
 
-        public int GeneCount => bounds.Count;
+        public int GeneCount => _bounds.Count;
 
-        public int TotalBits => GeneCount * _bitsPerGene;
+        public int TotalBits => GeneCount * BitsPerGene;
 
-        public List<(double Min, double Max)> getBounds()
+        public List<(double min, double max)> getBounds()
         {
-            return bounds;
+            return _bounds;
         }
-        public Genotype(List<bool> Chromosome, int _bitsPerGene, List<(double Min, double Max)> bounds)
+        public Genotype(List<bool> chromosome, int bitsPerGene, List<(double min, double max)> bounds)
         {
-            this.Chromosome = Chromosome;
-            this._bitsPerGene = _bitsPerGene;
-            this.bounds = bounds; 
+            Chromosome = chromosome;
+            BitsPerGene = bitsPerGene;
+            _bounds = bounds; 
         }
-        public Genotype(int _bitsPerGene, List<(double Min, double Max)> bounds, Random rnd)
+        public Genotype(int bitsPerGene, List<(double Min, double Max)> bounds, Random rnd)
         {
-            this._bitsPerGene = _bitsPerGene;
-            this.bounds = bounds;
+            BitsPerGene = bitsPerGene;
+            _bounds = bounds;
 
-            Chromosome = new List<bool>(GeneCount * _bitsPerGene);
+            Chromosome = new List<bool>(GeneCount * bitsPerGene);
             for (int i = 0; i < TotalBits; i++)
                 Chromosome.Add(rnd.NextDouble() < 0.5);
         }
         public List<double> Decode()
         {
             int counter = 0;
-            int pow = _bitsPerGene -1;
+            int pow = BitsPerGene -1;
             double total = 0;
-            double Masshtab = (Math.Pow(2, _bitsPerGene) - 1); // масштабирование максимальное значение битовой строки - 1(0 до 2^n - 1) / 100(один процент) 
+            double Masshtab = (Math.Pow(2, BitsPerGene) - 1); // масштабирование максимальное значение битовой строки - 1(0 до 2^n - 1) / 100(один процент) 
             List<double> phenotype = new List<double>();
             for (int i = 0; i < Chromosome.Count(); i++) {
                 if (Chromosome[i] == true)
@@ -55,11 +55,11 @@ namespace _1GenAlg2ex.Core // параметры с маленькой букв�
                 if(pow < 0)
                 {
                     total /= Masshtab;
-                    total *= (bounds[counter].Max - bounds[counter].Min);
-                    total += bounds[counter].Min;
+                    total *= (_bounds[counter].Max - _bounds[counter].Min);
+                    total += _bounds[counter].Min;
                     phenotype.Add(total);
                     total = 0;
-                    pow = _bitsPerGene - 1;
+                    pow = BitsPerGene - 1;
                     counter++;
                 }
             }

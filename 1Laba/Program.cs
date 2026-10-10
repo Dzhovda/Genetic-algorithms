@@ -45,26 +45,6 @@ namespace _1GenAlg2ex
 
             // 7. Запустить
             Individual best = ga.Run(100);
-
-            //// 8. Вывести результат
-            //Console.WriteLine($"Лучшее решение:");
-            //Console.WriteLine($"  X = {best.Phenotype[0]:F6}");
-            //Console.WriteLine($"  Y = {best.Phenotype[1]:F6}");
-            //Console.WriteLine($"  f = {best.Fitness:F15}");
-
-            //var plot = new ScottPlot.Plot();
-
-            //// Добавляем линию: X — поколения, Y — лучший фитнес
-            //plot.Add.Scatter(ga.GenerationHistory.ToArray(), ga.BestFitnessHistory.ToArray());
-
-            //// Настройки (опционально)
-            //plot.Title("Сходимость генетического алгоритма");
-            //plot.XLabel("Поколение");
-            //plot.YLabel("Лучший фитнес");
-
-            //// Сохраняем в PNG
-            //plot.SavePng("convergence.png", 800, 600);
-            //Console.WriteLine("График сходимости сохранён в convergence.png");
         }
     }
 }

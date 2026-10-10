@@ -17,7 +17,7 @@ namespace _1GenAlg2ex.Core
         public List<Individual> Individuals { get; private set; } = new List<Individual>();
 
 
-        public Population(int populationCount, int bitsPerGene, List<(double Min, double Max)> bounds, IFitnessFunction fitnessFunction, Random rnd)
+        public Population(int populationCount, int bitsPerGene, List<(double min, double max)> bounds, IFitnessFunction fitnessFunction, Random rnd)
         {
             _bounds = bounds;
             _rnd = rnd;
