@@ -8,13 +8,13 @@ namespace _1GenAlg2ex.Operators
 {
     internal class TournamentSelector : ISelector
     {
-        private Random rnd;
+        private Random _rnd;
 
-        private int tournamentSize;
+        private int _tournamentSize;
         public TournamentSelector(Random rnd, int tournamentSize)
         {
-            this.rnd = rnd;
-            this.tournamentSize = tournamentSize;
+            _rnd = rnd;
+            _tournamentSize = tournamentSize;
         }
 
         public Individual Select(List<Individual> individuals)
@@ -22,9 +22,9 @@ namespace _1GenAlg2ex.Operators
             List<Individual> filtered = new List<Individual>();
             int iBest = 0;
 
-            for (int i = 0; i < tournamentSize; i++)
+            for (int i = 0; i < _tournamentSize; i++)
             {
-                int iRnd = rnd.Next(individuals.Count);
+                int iRnd = _rnd.Next(individuals.Count);
                 filtered.Add(individuals[iRnd]);
             }
 

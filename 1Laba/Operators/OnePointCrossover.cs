@@ -24,8 +24,8 @@ namespace _1GenAlg2ex.Operators
                 childList1.Add(parent2.Chromosome[i]);
                 childList2.Add(parent1.Chromosome[i]);
             }
-            Genotype child1 = new Genotype(childList1, parent1._bitsPerGene, parent1.getBounds());
-            Genotype child2 = new Genotype(childList2, parent1._bitsPerGene, parent1.getBounds());
+            Genotype child1 = new Genotype(childList1, parent1.BitsPerGene, parent1.getBounds());
+            Genotype child2 = new Genotype(childList2, parent1.BitsPerGene, parent1.getBounds());
             return (child1, child2);
             
         }
